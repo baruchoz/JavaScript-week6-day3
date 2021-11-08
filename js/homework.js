@@ -21,6 +21,32 @@ let person3 = {
 }   
 
 
+// Brians solution:
+
+function parsePersonObject(person){
+    // Loop through the keys of person
+    for (let i = 0; i < Object.keys(person).length; i++){
+        // If value of object at key[i] is an array
+        if (Array.isArray(Object.values(person)[i])){
+            // loop through the array
+            for (let j = 0; j < Object.values(person)[i].length; j++){
+                // if the value of array[j] is an object
+                if(typeof(Object.values(person)[i][j]) === 'object'){
+                    // loop through the keys of person[i][j]
+                    for (let k = 0; k < Object.keys(Object.values(person)[i][j]).length; k++){
+                        // log the value at index k of person[i][j]
+                        console.log(Object.values(Object.values(person)[i][j])[k])
+                    }
+                }else {
+                    console.log(Object.values(person)[i][j])
+                }
+            }
+        }else{
+            console.log(Object.values(person)[i])
+        }
+    }
+}
+
 
 //=======Exercise #2=========//
 /*
@@ -34,8 +60,8 @@ age by 3 years.
 
 // Create our Person Prototype (Person class)
 
-
 // create the printInfo method
+
 
 // Create another method for the addAge method
 
@@ -45,10 +71,17 @@ age by 3 years.
 /*Write a function that takes in an array and removes every even index with a splice,
 and replaces it with the string "even index" */
 
+console.clear()
 
 function replaceEvens(arr){
-    //code goes here
+    console.log(arr)
+    for (let i = 0; i < arr.length; i+=2) { 
+    arr.splice(i, 1, 'even index')
+    }
+    console.log(arr)
 }
+
+replaceEvens(["Max","Baseball","Reboot","Goku","Trucks","Rodger"])
 
 //Expected output
 //Given arr == ["Max","Baseball","Reboot","Goku","Trucks","Rodger"]
